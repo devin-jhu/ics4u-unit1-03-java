@@ -58,13 +58,9 @@ final class Food {
     */
     public static final String PIZZA = "pizza";
     /**
-     * Variable for the total time for the warm up.
-    */
-    private static double time;
-    /**
-     * Variable for seconds.
-    */
-    private static double seconds;
+     * This is the variable for 60 seconds.
+     */
+    public static final double SIXTY = 60;
 
     /**
     * Prevent instantiation.
@@ -84,6 +80,13 @@ final class Food {
     * @param args No args will be used
     */
     public static void main(String[] args) {
+
+	// identifying the changing variables.
+        // time, minutes, seconds
+        double time = 0;
+        double mins = 0;
+        double seconds = 0;
+
         // input
         final Scanner userFoodInput = new Scanner(System.in);
         final Scanner userAmount = new Scanner(System.in);
@@ -111,8 +114,13 @@ final class Food {
                 } else if (userInput2.equals(THREE)) {
                     time = time * THREEFOODS;
                 }
-                seconds = time;
-                System.out.println("it will take " + seconds + " seconds.");
+                // calculation for setting up time in minutes and seconds
+                seconds = time / SIXTY;
+                mins = Math.floor(seconds);
+                seconds = (seconds - mins) * SIXTY;    
+		System.out.println(
+		    "it will take " + mins + " minutes " + seconds + " seconds."
+		);
             } else {
                 System.out.println("not a number");
             }
